@@ -1,3 +1,8 @@
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+
+
 // Remove duplicates from array of integer maintaining original order.
 public class ArrayDuplicates {
     public static void main(String[] args) {
@@ -19,4 +24,9 @@ public class ArrayDuplicates {
         return a;
 
     }
+    
+   private static int[] removeDuplicatesJava8(int[] arr) {
+       LinkedHashSet<Integer> set = Arrays.stream(arr).boxed().collect( Collectors.toCollection( LinkedHashSet::new ));
+       return set.stream().mapToInt(Integer::intValue).toArray();
+   }
 }
